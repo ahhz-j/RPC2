@@ -1,0 +1,9 @@
+## Interface: 11507
+## Title: RPC2
+## Notes: Raid Player Counter for Titan Panel
+## Author: ahhz-j
+## Version: 1.0.0
+## Dependencies: Titan
+## SavedVariables: TitanRPC2Settings
+
+RPC2.lua
