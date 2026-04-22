@@ -761,16 +761,16 @@ end
 
 local function UpdateCS23Grid()
     if not CS23Frame or not CS23Frame.cells then return end
-    local keyUsage = {}
+    local keyUsageCount = {}
     for i, cell in ipairs(CS23Frame.cells) do
         local specData = CS23Specs[i]
         if specData and specData.key then
-            local total    = GetPoolCount(specData.key)
-            local usage    = (keyUsage[specData.key] or 0) + 1
-            keyUsage[specData.key] = usage
+            local total         = GetPoolCount(specData.key)
+            local currentUsage  = (keyUsageCount[specData.key] or 0) + 1
+            keyUsageCount[specData.key] = currentUsage
             local icon = cell.icon
             if icon then
-                if total >= usage then
+                if total >= currentUsage then
                     icon:SetDesaturated(false)
                     icon:SetVertexColor(1, 1, 1, 1)
                 else
