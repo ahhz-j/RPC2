@@ -16,7 +16,7 @@ local function RPC2_GetPlayerCount()
 end
 
 function TitanPanelRPC2Button_GetButtonText()
-    local members = RPC2_GetPlayerCount()
+    local members = select(1, RPC2_GetPlayerCount())
     return "RPC2", tostring(members)
 end
 
