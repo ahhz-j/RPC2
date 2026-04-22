@@ -4,7 +4,7 @@
 ## Notes: RPC2 skeleton
 ## IconTexture: Interface\AddOns\RPC2\icon\rpclogo.png
 ## Author: ahhz
-## Version: 0.1.0
+## Version: 0.2.0
 ## SavedVariables: RPC2DB
 
 data.lua

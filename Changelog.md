@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.0 (2026-04-22)
+- **[重构]** 彻底重写专精检测引擎，引入三态状态机（UNKNOWN → PENDING_INSPECT → CONFIRMED）。
+- **[新增]** 保护机制：成员专精一旦由 Inspect API 确认（confirmed=true），永久停止对其的扫描与缓存失效，避免过度查询。
+- **[新增]** 排他专精条件：引入 `EvaluateUnitSpec`，对单个单位只产生唯一 spec 结果，杜绝一名玩家同时命中多个专精格子的问题。
+- **[优化]** 资源占用：启发式缓存结果，仅在 `UNIT_AURA` 导致灵气变化时失效；已确认成员的 UNIT_AURA 事件完全跳过，不再触发更新。
+- **[优化]** UI 更新节流：所有事件通过 0.3 秒节流合并，主界面隐藏时跳过所有更新计算。
+- **[优化]** Inspect 队列：使用 GUID 去重，1.5 秒间隔，已确认成员出队时自动跳过。
+- **[修复]** INSPECT_READY 事件正确保存专精为 confirmed，支持 Retail API（GetInspectSpecialization）与 WotLK 回落（GetTalentTabInfo + isInspect=true）。
+- **[清理]** 移除全局污染：删除 `RPC2 = {}` 全局表，所有状态改为文件局部变量；仅保留 WoW 必需的 `SLASH_RPC2_1` / `SlashCmdList["RPC2"]` 全局。
+- **[删除]** 剔除上一代主程序 `RPC.lua`，`rpc.toc` 标记为仅供参考的遗留文件。
+
 ## v0.1.8 (2026-02-19)
 - 修复严重错误：移除了未定义的全局函数 `QueueInspect` 调用，解决了导致其他插件（如 ElvUI）异常的问题。
 - 优化德鲁伊专精检测：为猫德和熊德规则添加 `maxMana` 限制，彻底解决高蓝量奶德变猫被误判的问题。
