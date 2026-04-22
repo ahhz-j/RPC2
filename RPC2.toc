@@ -1,0 +1,11 @@
+## Interface: 20505, 38001, 30801, 50502, 50503
+## Title: ahhz's RPC2
+## Title-zhCN: ahhz's RPC2 - 团队计数工具 (Raid Player Count)
+## Notes: RPC2 skeleton
+## IconTexture: Interface\AddOns\RPC2\icon\rpclogo.png
+## Author: ahhz
+## Version: 0.1.0
+## SavedVariables: RPC2DB
+
+data.lua
+RPC2.lua
